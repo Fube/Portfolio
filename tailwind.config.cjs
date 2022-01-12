@@ -1,8 +1,9 @@
 // tailwind.config.cjs
 
 module.exports = {
+	mode: 'jit',
 	// add this section
-	purge: ['./src/**/*.html', './src/**/*.svelte'],
+	content: ['./src/**/*.html', './src/**/*.svelte'],
 	darkMode: 'media', // or 'media' or 'class'
 	theme: {
 		extend: {}

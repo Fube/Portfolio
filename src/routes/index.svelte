@@ -1,1 +1,1 @@
-<h1>Hello World</h1>
+<input class="hover:focus:text-red-600">Hello World</input>
