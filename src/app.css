@@ -10,3 +10,7 @@
 		@apply font-bold;
 	}
 }
+
+html {
+	@apply font-mono;
+}
