@@ -6,43 +6,48 @@
 	export let title: string;
 	export let lang: string;
 	export let content: string;
-	export let extra: string = '';
 	export let github: string = '';
+	export let maxWidth: number = null;
+
+	let calculated = false;
 
 	let titleRef: HTMLElement;
 	let wholeRef: HTMLElement;
+	let windowWidth: number;
+	let windowHeight: number;
+
+	const baseSpeed = 0.0005;
 
 	$: {
 		if (titleRef && wholeRef) {
-			wholeRef.style.height = `${titleRef.offsetHeight + 4}px`;
-			wholeRef.style.maxWidth = `${titleRef.offsetWidth + 4}px`;
-			wholeRef.style.width = `${titleRef.offsetWidth + 4}px`;
+			if (!calculated) {
+				dispatch('message', {
+					type: 'width',
+					width: titleRef.offsetWidth
+				});
+				calculated = true;
+			}
+			wholeRef.style.maxHeight = `${titleRef.offsetHeight + 4}px`;
+			wholeRef.style.maxWidth = `${(maxWidth ?? titleRef.offsetWidth) + 4}px`;
 		}
 	}
 
-	function engage() {
-		dispatch('message', {
-			type: 'mouseenter'
-		});
-	}
-
-	function disengage() {
-		dispatch('message', {
-			type: 'mouseleave'
-		});
+	$: {
+		if (wholeRef)
+			wholeRef.style.transitionDuration = `${baseSpeed * Math.max(windowWidth, windowHeight)}s`;
 	}
 </script>
 
+<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
+
 <div
-	class={'project !w-36 hover:!h-full hover:!w-full hover:!max-w-full hover:scale-110 ' + extra}
+	class="project hover:!max-w-[90vw] hover:md:!max-w-[70vw] hover:lg:!max-w-[50vw] hover:!max-h-[100vh] whitespace-nowrap hover:whitespace-normal"
 	bind:this={wholeRef}
-	on:mouseenter={engage}
-	on:mouseleave={disengage}
 >
-	<h4 bind:this={titleRef} class="mx-auto">{title}</h4>
-	<code class="float-left text-left w-full">
+	<h4 bind:this={titleRef} class="inline-block p-4">{title}</h4>
+	<code class="text-left w-full">
 		<ul>
-			<li class="text-center text-info">Written in {lang}</li>
+			<li class="text-center text-info pb-2">Written in {lang}</li>
 			{#each content.split('\n') as line}
 				<li class="mx-4 text-left text-accent">{line}</li>
 			{/each}
@@ -63,7 +68,7 @@
 		@apply text-secondary;
 		@apply border-2 rounded-lg;
 		@apply overflow-hidden;
-		@apply transition-all duration-500 ease-out;
+		@apply transition-all ease-out;
 		@apply grid-cols-2;
 		/* transition: width 500ms, max-width 500ms, height 1s ease-in-out; */
 	}
