@@ -34,7 +34,7 @@
 </script>
 
 <div
-	class={'project hover:!h-full hover:!w-full hover:!max-w-full hover:scale-110 ' + extra}
+	class={'project !w-36 hover:!h-full hover:!w-full hover:!max-w-full hover:scale-110 ' + extra}
 	bind:this={wholeRef}
 	on:mouseenter={engage}
 	on:mouseleave={disengage}

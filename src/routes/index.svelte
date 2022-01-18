@@ -71,7 +71,8 @@
 					<div class="flex justify-center mt-8">
 						<div
 							class={`projects max-h-3 w-1/3 transition-all duration-[750ms] ${
-								isHoveringProject && 'max-h-[35vh] w-1/2'
+								isHoveringProject &&
+								'lg:max-h-[35vh] lg:w-[70vw] lg:!gap-[2.5rem] md:max-h-[80vh] md:w-[90vw] md:!gap-[1.75rem]'
 							}`}
 						>
 							{#each projects as project}
@@ -101,7 +102,7 @@
 
 <style lang="postcss">
 	.projects {
-		@apply grid grid-cols-2 gap-[1.75rem];
+		@apply grid grid-cols-2 gap-[1.5rem];
 		transition-timing-function: cubic-bezier(0.71, 0.3, 0.35, 0.73);
 	}
 </style>
