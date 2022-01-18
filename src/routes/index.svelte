@@ -72,7 +72,7 @@
 						<div
 							class={`projects max-h-3 w-1/3 transition-all duration-[750ms] ${
 								isHoveringProject &&
-								'lg:max-h-[35vh] lg:w-[70vw] lg:!gap-[2.5rem] md:max-h-[80vh] md:w-[90vw] md:!gap-[1.75rem]'
+								'lg:max-h-[35vh] lg:w-[70vw] lg:!gap-[3.5rem] md:max-h-[80vh] md:w-[90vw] md:!gap-[1.75rem]'
 							}`}
 						>
 							{#each projects as project}
