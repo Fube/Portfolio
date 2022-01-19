@@ -1,42 +1,30 @@
+<script context="module">
+	export const load = async ({ fetch }) => {
+		const url = `/index.json`;
+		const response = await fetch(url);
+
+		if (response.ok) {
+			const projects = await response.json();
+			return {
+				props: {
+					projects
+				}
+			};
+		}
+	};
+</script>
+
 <script>
 	import Project from '$lib/components/Project.svelte';
 	import { Parallax, ParallaxLayer } from 'svelte-parallax';
 
 	let maxWidth = null;
-	const projects = [
-		{
-			title: 'ESP8266 WOL',
-			lang: 'C/C++',
-			content: `Uses an ESP-8266 and the WOL protocol to wake up a computer from sleep.
-			Can be configured to listen for a Discord message or an http request.`,
-			github: 'https://github.com/Fube/ESP8266_WOL'
-		},
-		{
-			title: 'Buffoon',
-			lang: 'Java, Kotlin, JS',
-			content: `A micro-service based joke app.
-			Uses a REST API to retrieve jokes from a database.
-			Uses RabbitMQ & HTTP to communicate between services.`,
-			github: 'https://github.com/Fube/Buffoon'
-		},
-		{
-			title: 'Fake',
-			lang: 'Lmao',
-			content: `Lorem
-			Ipsum`
-		},
-		{
-			title: 'Fake',
-			lang: 'Lmao',
-			content: `Lorem
-			Ipsum`
-		}
-	];
+	export let projects = [];
 </script>
 
 <div class="flex flex-col h-screen">
 	<div class="mt-12">
-		<Parallax sections={3} disabled={true}>
+		<Parallax sections={3} disabled={false}>
 			<ParallaxLayer>
 				<section class="hero h-full text-left">
 					<div class="max-w-md">
