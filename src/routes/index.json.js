@@ -1,5 +1,5 @@
 export async function get() {
-	const url = `https://cdn.contentful.com/spaces/${process.env.VITE_CONTENTFUL_SPACE_ID}/environments/master/entries?access_token=${process.env.VITE_CONTENTFUL_ACCESS_TOKEN}&content_type=projects`;
+	const url = `https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=projects`;
 
 	const response = await fetch(url);
 	const json = await response.json();
