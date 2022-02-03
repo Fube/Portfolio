@@ -4,11 +4,9 @@
 		const response = await fetch(url);
 
 		if (response.ok) {
-			const projects = await response.json();
+			const props = await response.json();
 			return {
-				props: {
-					projects
-				}
+				props
 			};
 		}
 	};
@@ -19,10 +17,9 @@
 	import { Parallax, ParallaxLayer } from 'svelte-parallax';
 	import Typewriter from 'svelte-typewriter';
 
-	const whoAmI = ['developer', 'student', 'CS enthusiast'];
-
 	let maxWidth = null;
 	export let projects = [];
+	export let whoAmI = ['developer'];
 </script>
 
 <div class="flex flex-col h-screen">

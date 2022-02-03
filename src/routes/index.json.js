@@ -1,12 +1,25 @@
-export async function get() {
-	const url = `https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}&content_type=projects`;
+import contentful from 'contentful';
 
-	const response = await fetch(url);
-	const json = await response.json();
+export async function get() {
+	const client = contentful.createClient({
+		space: process.env.CONTENTFUL_SPACE_ID,
+		accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+	});
+
+	const [projects, whoAmI] = await Promise.all([
+		client.getEntries({
+			content_type: 'projects',
+			order: 'sys.createdAt'
+		}),
+		client.getEntries({
+			content_type: 'whoami'
+		})
+	]).then((entries) => entries.map((entry) => entry.items.map((items) => items.fields)));
 
 	return {
-		body: json.items
-			.sort((a, b) => new Date(a.updatedAt) < new Date(b.updatedAt))
-			.map((n) => n.fields)
+		body: {
+			projects,
+			whoAmI: whoAmI.map((n) => n.title)
+		}
 	};
 }
