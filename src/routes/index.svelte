@@ -17,6 +17,9 @@
 <script>
 	import Project from '$lib/components/Project.svelte';
 	import { Parallax, ParallaxLayer } from 'svelte-parallax';
+	import Typewriter from 'svelte-typewriter';
+
+	const whoAmI = ['developer', 'student', 'CS enthusiast'];
 
 	let maxWidth = null;
 	export let projects = [];
@@ -27,10 +30,17 @@
 		<Parallax sections={3} disabled={false}>
 			<ParallaxLayer>
 				<section class="hero h-full text-left">
-					<div class="max-w-md">
+					<div class="w-full text-center">
 						<h2 class="mb-5 text-secondary text-sm">Hello there, I'm</h2>
 						<h1 class="mb-3 text-6xl font-bold ml-2">Fube</h1>
-						<h3 class="text-secondary">I'm a developer</h3>
+						<h3 class="text-secondary">
+							<span>I'm a</span>
+							<Typewriter loop>
+								{#each whoAmI as value}
+									<span class="text-primary">{value}</span>
+								{/each}
+							</Typewriter>
+						</h3>
 						[Arrow down here]
 					</div>
 				</section>
