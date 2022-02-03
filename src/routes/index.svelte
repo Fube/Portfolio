@@ -24,7 +24,7 @@
 
 <div class="flex flex-col h-screen">
 	<div class="mt-12">
-		<Parallax sections={3} disabled={false}>
+		<Parallax sections={2} disabled={false}>
 			<ParallaxLayer>
 				<section class="hero h-full text-left">
 					<div class="w-full text-center">
@@ -43,7 +43,7 @@
 				</section>
 			</ParallaxLayer>
 
-			<ParallaxLayer offset={1}>
+			<ParallaxLayer offset={0.99}>
 				<section class="text-center">
 					<h1 class="text-primary text-4xl">Things I've done</h1>
 					<div class="flex justify-center mt-8">
@@ -63,7 +63,7 @@
 			</ParallaxLayer>
 
 			<!--offset 2 sends him to another dimension-->
-			<ParallaxLayer offset={1.99}>
+			<ParallaxLayer offset={1.25}>
 				<section class="text-center">
 					<h1 class="text-primary text-4xl">Things I've done</h1>
 					<ul>
