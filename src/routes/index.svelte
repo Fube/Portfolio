@@ -109,17 +109,17 @@
 		<div class="mt-12">
 			<Parallax sections={2} disabled={false} bind:this={parallax}>
 				<ParallaxLayer>
-					<section class="hero h-full text-left">
+					<section class="hero h-full">
 						<div class="w-full text-center">
 							<h2 class="mb-5 text-secondary text-sm">Hello there, I'm</h2>
 							<Visibility steps={100} bind:percent>
 								<h1 class="mb-3 text-6xl font-bold ml-2">Fube</h1>
 							</Visibility>
 							<h3 class="text-secondary">
-								<span>I'm a</span>
+								<span class="text-left">I'm a</span>
 								<Typewriter loop cursor={getFlatPropertyFromClass('color', 'text-primary')}>
 									{#each whoAmI as value}
-										<span class="text-primary text-lg">{value}</span>
+										<span class="text-primary text-lg block text-center pl-3">{value}</span>
 									{/each}
 								</Typewriter>
 							</h3>
