@@ -30,10 +30,10 @@
 		projects: 1.5
 	};
 
-	let percent = 0;
+	let percent = 100;
 
 	onMount(() => {
-		const target = window.location.hash.substr(1);
+		const target = window.location.hash.slice(1);
 		pScrollTo(target);
 	});
 
