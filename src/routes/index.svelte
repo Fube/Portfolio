@@ -121,7 +121,7 @@
 		{/if}
 
 		<div class="mt-12">
-			<Parallax sections={2} disabled={false} bind:this={parallax} style="overflow: visible;">
+			<Parallax sections={2} disabled={false} bind:this={parallax}>
 				<ParallaxLayer>
 					<section class="hero h-full">
 						<div class="w-full text-center">
@@ -150,6 +150,7 @@
 							</h1>
 							<div class="flex justify-center">
 								<div class="w-fit text-justify p-6 flex flex-col gap-2 max-w-full sm:max-w-[45%]">
+									<!-- TODO: Extract this into CMS -->
 									<p class="even:text-secondary odd:text-primary">
 										I am a quick learning, autonomous software developer with a passion for
 										programming and a desire to create software that will make a positive impact on
@@ -168,26 +169,6 @@
 						</section>
 
 						<section id="what" class="text-center">
-							<h1 class="text-primary text-3xl sm:text-4xl text-left pl-6 sm:text-center sm:p-0">
-								What I've done
-							</h1>
-							<div class="flex justify-center mt-8">
-								<div class="projects hover:max-h-[100vh] hover:max-w-[100vw] transition-all">
-									{#each projects as project}
-										<div class="flex justify-center hover:scale-105 transition-all">
-											<Project
-												on:message={({ detail: { width } }) =>
-													(maxWidth = Math.max(maxWidth, width))}
-												{maxWidth}
-												{...project}
-											/>
-										</div>
-									{/each}
-								</div>
-							</div>
-						</section>
-
-						<section class="text-center">
 							<h1 class="text-primary text-3xl sm:text-4xl text-left pl-6 sm:text-center sm:p-0">
 								What I've done
 							</h1>
