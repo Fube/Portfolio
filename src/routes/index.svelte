@@ -20,6 +20,7 @@
 	import Typewriter from 'svelte-typewriter';
 	import { slide } from 'svelte/transition';
 	import * as animateScroll from 'svelte-scrollto';
+	import Timeline from '$lib/components/Timeline.svelte';
 
 	let maxWidth = null;
 	export let projects = [];
@@ -122,7 +123,7 @@
 		{/if}
 
 		<div class="mt-12">
-			<Parallax sections={2} disabled={false} bind:this={parallax}>
+			<Parallax sections={3} disabled={false} bind:this={parallax} style="overflow: visible">
 				<ParallaxLayer>
 					<section class="hero h-full">
 						<div class="w-full text-center">
@@ -175,6 +176,17 @@
 										</div>
 									{/each}
 								</div>
+							</div>
+						</section>
+
+						<section id="time" class="text-center">
+							<h1 class="text-primary text-3xl sm:text-4xl text-left pl-6 sm:text-center sm:p-0">
+								Timeline
+							</h1>
+
+							<div class="flex justify-center">
+								<!-- TODO: Add content -->
+								<Timeline entries={[]} />
 							</div>
 						</section>
 					</main>
