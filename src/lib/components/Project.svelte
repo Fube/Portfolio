@@ -4,7 +4,7 @@
 	const dispatch = createEventDispatcher();
 
 	export let title: string;
-	export let lang: string;
+	export let lang: string[];
 	export let content: string;
 	export let github: string = '';
 	export let maxWidth: number = null;
@@ -41,13 +41,13 @@
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 
 <div
-	class="project hover:!max-w-[90vw] hover:md:!max-w-[70vw] hover:lg:!max-w-[50vw] hover:!max-h-[100vh] whitespace-nowrap hover:whitespace-normal"
+	class="project hover:!max-w-[90vw] hover:md:!max-w-[70vw] hover:lg:!max-w-[50vw] hover:!max-h-[100vh] hover:!whitespace-normal"
 	bind:this={wholeRef}
 >
 	<h4 bind:this={titleRef} class="inline-block p-4">{title}</h4>
 	<code class="text-left w-full">
 		<ul>
-			<li class="text-center text-info pb-2">Written in {lang}</li>
+			<li class="text-center text-info pb-2">Written in {lang.join(', ')}</li>
 			{#each content.split('\n') as line}
 				<li class="mx-4 text-left text-accent">{line}</li>
 			{/each}
@@ -70,6 +70,6 @@
 		@apply overflow-hidden;
 		@apply transition-all ease-out;
 		@apply grid-cols-2;
-		/* transition: width 500ms, max-width 500ms, height 1s ease-in-out; */
+		@apply whitespace-nowrap;
 	}
 </style>

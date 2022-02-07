@@ -19,6 +19,7 @@
 	import { Parallax, ParallaxLayer } from 'svelte-parallax';
 	import Typewriter from 'svelte-typewriter';
 	import { slide } from 'svelte/transition';
+	import * as animateScroll from 'svelte-scrollto';
 
 	let maxWidth = null;
 	export let projects = [];
@@ -26,8 +27,9 @@
 
 	let parallax;
 	const idToSection = {
-		me: 1,
-		projects: 1.5
+		me: '#fakeIdHere',
+		who: { selector: '#who', offset: 310 },
+		what: { selector: '#what', offset: 200 }
 	};
 
 	let percent = 100;
@@ -42,7 +44,13 @@
 	}
 
 	function pScrollTo(target) {
-		parallax.scrollTo(idToSection[target], { duration: 550 });
+		const n = { ...idToSection[target] };
+		n.element = document.querySelector(n.selector);
+
+		animateScroll.scrollTo({
+			duration: 500,
+			...n
+		});
 	}
 
 	function getFlatPropertyFromClass(prop, className, fallback = undefined) {
@@ -69,6 +77,7 @@
 					<div
 						class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box sm:rounded-none"
 					>
+						<!-- Hamburger -->
 						<!-- <div class="flex-none">
 							<button class="btn btn-square btn-ghost">
 								<svg
@@ -96,7 +105,12 @@
 								</Typewriter>
 							</div>
 						</button>
-						<button on:click={wrap(pScrollTo, 'projects')}>
+						<button on:click={wrap(pScrollTo, 'who')}>
+							<div class="flex-1 px-2 mx-2">
+								<span class="text-lg">About</span>
+							</div>
+						</button>
+						<button on:click={wrap(pScrollTo, 'what')}>
 							<div class="flex-1 px-2 mx-2">
 								<span class="text-lg">Projects</span>
 							</div>
@@ -107,7 +121,7 @@
 		{/if}
 
 		<div class="mt-12">
-			<Parallax sections={2} disabled={false} bind:this={parallax}>
+			<Parallax sections={2} disabled={false} bind:this={parallax} style="overflow: visible;">
 				<ParallaxLayer>
 					<section class="hero h-full">
 						<div class="w-full text-center">
@@ -129,41 +143,82 @@
 				</ParallaxLayer>
 
 				<ParallaxLayer offset={0.99}>
-					<section id="projects" class="text-center">
-						<h1 class="text-primary text-4xl">Things I've done</h1>
-						<div class="flex justify-center mt-8">
-							<div class="projects hover:max-h-[100vh] hover:max-w-[100vw] transition-all">
-								{#each projects as project}
-									<div class="flex justify-center hover:scale-105 transition-all">
-										<Project
-											on:message={({ detail: { width } }) => (maxWidth = Math.max(maxWidth, width))}
-											{maxWidth}
-											{...project}
-										/>
-									</div>
-								{/each}
+					<main class="flex flex-col gap-6">
+						<section id="who" class="text-center">
+							<h1 class="text-primary text-3xl sm:text-4xl text-left pl-6 sm:text-center sm:p-0">
+								Who Am I
+							</h1>
+							<div class="flex justify-center">
+								<div class="w-fit text-justify p-6 flex flex-col gap-2 max-w-full sm:max-w-[45%]">
+									<p class="even:text-secondary odd:text-primary">
+										I am a quick learning, autonomous software developer with a passion for
+										programming and a desire to create software that will make a positive impact on
+										the world.
+									</p>
+									<p class="even:text-secondary odd:text-primary">
+										I spend most of my time programming or reading documentation. I love learning
+										new technologies and I am always looking to improve my skills.
+									</p>
+									<p class="even:text-secondary odd:text-primary">
+										As for my hobbies, I like tabletop games, video games, and reading. I also like
+										to go on walks, hike, and bike.
+									</p>
+								</div>
 							</div>
-						</div>
-					</section>
-				</ParallaxLayer>
+						</section>
 
-				<!--offset 2 sends him to another dimension-->
-				<ParallaxLayer offset={1.25}>
-					<section class="text-center">
-						<h1 class="text-primary text-4xl">Things I've done</h1>
-						<ul>
-							<li>Stuff</li>
-						</ul>
-					</section>
+						<section id="what" class="text-center">
+							<h1 class="text-primary text-3xl sm:text-4xl text-left pl-6 sm:text-center sm:p-0">
+								What I've done
+							</h1>
+							<div class="flex justify-center mt-8">
+								<div class="projects hover:max-h-[100vh] hover:max-w-[100vw] transition-all">
+									{#each projects as project}
+										<div class="flex justify-center hover:scale-105 transition-all">
+											<Project
+												on:message={({ detail: { width } }) =>
+													(maxWidth = Math.max(maxWidth, width))}
+												{maxWidth}
+												{...project}
+											/>
+										</div>
+									{/each}
+								</div>
+							</div>
+						</section>
+
+						<section class="text-center">
+							<h1 class="text-primary text-3xl sm:text-4xl text-left pl-6 sm:text-center sm:p-0">
+								What I've done
+							</h1>
+							<div class="flex justify-center mt-8">
+								<div class="projects hover:max-h-[100vh] hover:max-w-[100vw] transition-all">
+									{#each projects as project}
+										<div class="flex justify-center hover:scale-105 transition-all">
+											<Project
+												on:message={({ detail: { width } }) =>
+													(maxWidth = Math.max(maxWidth, width))}
+												{maxWidth}
+												{...project}
+											/>
+										</div>
+									{/each}
+								</div>
+							</div>
+						</section>
+					</main>
 				</ParallaxLayer>
 			</Parallax>
 		</div>
 	</div>
 </div>
 
-<style lang="postcss">
+<style scoped lang="postcss">
 	.projects {
 		@apply flex flex-col gap-6;
 		transition-timing-function: cubic-bezier(0.71, 0.3, 0.35, 0.73);
+	}
+	section {
+		min-height: 75vh;
 	}
 </style>
