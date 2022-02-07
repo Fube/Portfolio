@@ -24,6 +24,7 @@
 	let maxWidth = null;
 	export let projects = [];
 	export let whoAmI = ['developer'];
+	export let about = [''];
 
 	let parallax;
 	const idToSection = {
@@ -150,20 +151,9 @@
 							</h1>
 							<div class="flex justify-center">
 								<div class="w-fit text-justify p-6 flex flex-col gap-2 max-w-full sm:max-w-[45%]">
-									<!-- TODO: Extract this into CMS -->
-									<p class="even:text-secondary odd:text-primary">
-										I am a quick learning, autonomous software developer with a passion for
-										programming and a desire to create software that will make a positive impact on
-										the world.
-									</p>
-									<p class="even:text-secondary odd:text-primary">
-										I spend most of my time programming or reading documentation. I love learning
-										new technologies and I am always looking to improve my skills.
-									</p>
-									<p class="even:text-secondary odd:text-primary">
-										As for my hobbies, I like tabletop games, video games, and reading. I also like
-										to go on walks, hike, and bike.
-									</p>
+									{@html about
+										.map((str) => `<p class="even:text-secondary odd:text-primary">${str}</p>`)
+										.join('')}
 								</div>
 							</div>
 						</section>

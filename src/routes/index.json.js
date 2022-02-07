@@ -6,20 +6,24 @@ export async function get() {
 		accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 	});
 
-	const [projects, whoAmI] = await Promise.all([
+	const [projects, whoAmI, about] = await Promise.all([
 		client.getEntries({
 			content_type: 'projects',
 			order: 'sys.createdAt'
 		}),
 		client.getEntries({
 			content_type: 'whoami'
+		}),
+		client.getEntries({
+			content_type: 'about'
 		})
 	]).then((entries) => entries.map((entry) => entry.items.map((items) => items.fields)));
 
 	return {
 		body: {
 			projects,
-			whoAmI: whoAmI.map((n) => n.title)
+			whoAmI: whoAmI.map((n) => n.title),
+			about: about[0].content.split('--BREAK--')
 		}
 	};
 }
