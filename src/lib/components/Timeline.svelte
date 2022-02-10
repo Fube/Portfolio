@@ -67,7 +67,7 @@
 	<div class={carousel ? 'w-full sm:w-2/3 carousel rounded-box p-4' : ''} bind:this={timeline}>
 		<ol class="items-center flex text-left">
 			{#each entries as entry, index}
-				<li class="relative h-full w-[50vw] sm:w-[10vw]">
+				<li class="relative h-full w-[50vw] md:w-[33vw] lg:w-[27vw] xl:w-[25vw]">
 					<div class="flex items-center">
 						<div class="pink-dot" />
 						<div class="green-line" />
