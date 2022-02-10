@@ -2,6 +2,24 @@
 	export let entries: TimelineEntry[] = [];
 	export let vertical = false;
 	export let carousel = false;
+
+	let timeline;
+
+	function handleLeft() {
+		timeline.scrollBy({
+			top: 0,
+			left: -200,
+			behavior: 'smooth'
+		});
+	}
+
+	function handleRight() {
+		timeline.scrollBy({
+			top: 0,
+			left: 200,
+			behavior: 'smooth'
+		});
+	}
 </script>
 
 {#if vertical}
@@ -26,7 +44,27 @@
 		</ol>
 	</div>
 {:else}
-	<div class={carousel ? 'w-full sm:w-2/3 carousel rounded-box p-4' : ''}>
+	<button on:click={handleLeft}>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			role="img"
+			width="45"
+			height="45"
+			preserveAspectRatio="xMidYMid meet"
+			viewBox="0 0 24 24"
+			><g fill="none"
+				><path
+					d="M15 4l-8 8l8 8"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/></g
+			></svg
+		>
+	</button>
+	<div class={carousel ? 'w-full sm:w-2/3 carousel rounded-box p-4' : ''} bind:this={timeline}>
 		<ol class="items-center flex text-left">
 			{#each entries as entry, index}
 				<li class="relative h-full w-[50vw] sm:w-[10vw]">
@@ -52,6 +90,28 @@
 			{/each}
 		</ol>
 	</div>
+	<button on:click={handleRight}>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			role="img"
+			width="45"
+			height="45"
+			preserveAspectRatio="xMidYMid meet"
+			viewBox="0 0 24 24"
+			><g transform="rotate(180 12 12)"
+				><g fill="none"
+					><path
+						d="M15 4l-8 8l8 8"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/></g
+				></g
+			></svg
+		>
+	</button>
 {/if}
 
 <style lang="postcss">
