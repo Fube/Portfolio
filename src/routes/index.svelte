@@ -187,6 +187,7 @@
 							<div class="flex justify-center">
 								<!-- TODO: Add content -->
 								<Timeline
+									carousel
 									entries={[
 										{
 											title: 'Started',

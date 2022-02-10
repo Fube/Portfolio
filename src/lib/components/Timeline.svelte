@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let entries: TimelineEntry[] = [];
-	export const vertical = false;
-	export const carousel = true;
+	export let vertical = false;
+	export let carousel = false;
 </script>
 
 {#if vertical}
