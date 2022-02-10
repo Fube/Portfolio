@@ -186,7 +186,20 @@
 
 							<div class="flex justify-center">
 								<!-- TODO: Add content -->
-								<Timeline entries={[]} />
+								<Timeline
+									entries={[
+										{
+											title: 'Started',
+											date: new Date('2021-02'),
+											body: 'I started working on Fube'
+										},
+										{
+											title: 'Started',
+											date: new Date('2020-01'),
+											body: 'I started working on Fube'
+										}
+									]}
+								/>
 							</div>
 						</section>
 					</main>
