@@ -30,8 +30,8 @@
 	let parallax;
 	const idToSection = {
 		me: '#fakeIdHere',
-		who: { selector: '#who', offset: 310 },
-		what: { selector: '#what', offset: 200 }
+		who: { selector: '#who', offset: 350 },
+		what: { selector: '#what', offset: 220 }
 	};
 
 	let percent = 100;
