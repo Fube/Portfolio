@@ -123,7 +123,7 @@
 		{/if}
 
 		<div class="mt-12">
-			<Parallax sections={3} disabled={false} bind:this={parallax} style="overflow: visible">
+			<Parallax sections={2.33} disabled={false} bind:this={parallax}>
 				<ParallaxLayer>
 					<section class="hero h-full">
 						<div class="w-full text-center">
@@ -144,8 +144,8 @@
 					</section>
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={0.99}>
-					<main class="flex flex-col gap-6">
+				<main class="flex flex-col gap-6">
+					<ParallaxLayer offset={0.99}>
 						<section id="who" class="text-center">
 							<h1 class="text-primary text-3xl sm:text-4xl text-left pl-6 sm:text-center sm:p-0">
 								Who Am I
@@ -181,7 +181,7 @@
 
 						<section id="time" class="text-center">
 							<h1 class="text-primary text-3xl sm:text-4xl text-left pl-6 sm:text-center sm:p-0">
-								Timeline
+								Where I've been
 							</h1>
 
 							<div class="flex justify-center">
@@ -197,13 +197,43 @@
 											title: 'Started',
 											date: new Date('2020-01'),
 											body: 'I started working on Fube'
+										},
+										{
+											title: 'Started',
+											date: new Date('2021-02'),
+											body: 'I started working on Fube'
+										},
+										{
+											title: 'Started',
+											date: new Date('2020-01'),
+											body: 'I started working on Fube'
+										},
+										{
+											title: 'Started',
+											date: new Date('2021-02'),
+											body: 'I started working on Fube'
+										},
+										{
+											title: 'Started',
+											date: new Date('2020-01'),
+											body: 'I started working on Fube'
+										},
+										{
+											title: 'Started',
+											date: new Date('2021-02'),
+											body: 'I started working on Fube'
+										},
+										{
+											title: 'Started',
+											date: new Date('2020-01'),
+											body: 'I started working on Fube'
 										}
 									]}
 								/>
 							</div>
 						</section>
-					</main>
-				</ParallaxLayer>
+					</ParallaxLayer>
+				</main>
 			</Parallax>
 		</div>
 	</div>
