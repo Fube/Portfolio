@@ -1,14 +1,17 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	export let entries: TimelineEntry[] = [];
 	export let vertical = false;
 	export let carousel = false;
 
-	let timeline;
+	let timeline: HTMLElement;
 
+	let scrollLen: number = 200;
 	function handleLeft() {
 		timeline.scrollBy({
 			top: 0,
-			left: -200,
+			left: -scrollLen,
 			behavior: 'smooth'
 		});
 	}
@@ -16,10 +19,20 @@
 	function handleRight() {
 		timeline.scrollBy({
 			top: 0,
-			left: 200,
+			left: scrollLen,
 			behavior: 'smooth'
 		});
 	}
+
+	let items: HTMLElement[] = [];
+	onMount(() => {
+		let avg = 0;
+		for (let i = 0; i < items.length; i++) {
+			avg += items[i].offsetWidth;
+		}
+		avg /= items.length;
+		scrollLen = avg;
+	});
 </script>
 
 {#if vertical}
@@ -67,7 +80,10 @@
 	<div class={carousel ? 'w-full sm:w-2/3 carousel rounded-box p-4' : ''} bind:this={timeline}>
 		<ol class="items-center flex text-left">
 			{#each entries as entry, index}
-				<li class="relative h-full w-[50vw] md:w-[33vw] lg:w-[27vw] xl:w-[25vw]">
+				<li
+					class="relative h-full w-[50vw] md:w-[33vw] lg:w-[27vw] xl:w-[25vw]"
+					bind:this={items[index]}
+				>
 					<div class="flex items-center">
 						<div class="pink-dot" />
 						<div class="green-line" />
