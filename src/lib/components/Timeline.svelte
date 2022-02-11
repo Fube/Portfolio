@@ -99,7 +99,7 @@
 							>{entry.date.toLocaleString('default', { month: 'long', year: 'numeric' })}</time
 						>
 						<p class="text-base font-normal">
-							Get started with dozens of web components and interactive elements.
+							{entry.body}
 						</p>
 					</div>
 				</li>

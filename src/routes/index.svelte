@@ -5,6 +5,11 @@
 
 		if (response.ok) {
 			const props = await response.json();
+
+			props.timeline = props.timeline.map((item) => {
+				item.date = new Date(item.date);
+				return item;
+			});
 			return {
 				props
 			};
@@ -26,6 +31,7 @@
 	export let projects = [];
 	export let whoAmI = ['developer'];
 	export let about = [''];
+	export let timeline = [];
 
 	let parallax;
 	const idToSection = {
@@ -186,51 +192,7 @@
 
 							<div class="flex justify-center">
 								<!-- TODO: Add content -->
-								<Timeline
-									carousel
-									entries={[
-										{
-											title: 'Started',
-											date: new Date('2021-02'),
-											body: 'I started working on Fube'
-										},
-										{
-											title: 'Started',
-											date: new Date('2020-01'),
-											body: 'I started working on Fube'
-										},
-										{
-											title: 'Started',
-											date: new Date('2021-02'),
-											body: 'I started working on Fube'
-										},
-										{
-											title: 'Started',
-											date: new Date('2020-01'),
-											body: 'I started working on Fube'
-										},
-										{
-											title: 'Started',
-											date: new Date('2021-02'),
-											body: 'I started working on Fube'
-										},
-										{
-											title: 'Started',
-											date: new Date('2020-01'),
-											body: 'I started working on Fube'
-										},
-										{
-											title: 'Started',
-											date: new Date('2021-02'),
-											body: 'I started working on Fube'
-										},
-										{
-											title: 'Started',
-											date: new Date('2020-01'),
-											body: 'I started working on Fube'
-										}
-									]}
-								/>
+								<Timeline carousel entries={timeline} />
 							</div>
 						</section>
 					</ParallaxLayer>

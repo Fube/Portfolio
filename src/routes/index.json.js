@@ -6,7 +6,7 @@ export async function get() {
 		accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 	});
 
-	const [projects, whoAmI, about] = await Promise.all([
+	const [projects, whoAmI, about, timeline] = await Promise.all([
 		client.getEntries({
 			content_type: 'projects',
 			order: 'sys.createdAt'
@@ -16,6 +16,10 @@ export async function get() {
 		}),
 		client.getEntries({
 			content_type: 'about'
+		}),
+		client.getEntries({
+			content_type: 'timeline',
+			order: 'fields.date'
 		})
 	]).then((entries) => entries.map((entry) => entry.items.map((items) => items.fields)));
 
@@ -23,7 +27,8 @@ export async function get() {
 		body: {
 			projects,
 			whoAmI: whoAmI.map((n) => n.title),
-			about: about[0].content.split('--BREAK--')
+			about: about[0].content.split('--BREAK--'),
+			timeline
 		}
 	};
 }
