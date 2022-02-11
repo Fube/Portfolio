@@ -37,7 +37,8 @@
 	const idToSection = {
 		me: '#fakeIdHere',
 		who: { selector: '#who', offset: 350 },
-		what: { selector: '#what', offset: 220 }
+		what: { selector: '#what', offset: 220 },
+		when: { selector: '#when', offset: 220 }
 	};
 
 	let percent = 100;
@@ -123,6 +124,11 @@
 								<span class="text-lg">Projects</span>
 							</div>
 						</button>
+						<button on:click={wrap(pScrollTo, 'when')}>
+							<div class="flex-1 px-2 mx-2">
+								<span class="text-lg">Timeline</span>
+							</div>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -185,13 +191,12 @@
 							</div>
 						</section>
 
-						<section id="time" class="text-center">
+						<section id="when" class="text-center">
 							<h1 class="text-primary text-3xl sm:text-4xl text-left pl-6 sm:text-center sm:p-0">
 								Where I've been
 							</h1>
 
 							<div class="flex justify-center">
-								<!-- TODO: Add content -->
 								<Timeline carousel entries={timeline} />
 							</div>
 						</section>
