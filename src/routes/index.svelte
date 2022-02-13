@@ -90,7 +90,7 @@
 						class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box sm:rounded-none"
 					>
 						<!-- Hamburger -->
-						<div class="flex-none dropdown">
+						<div class="flex-none dropdown block sm:hidden">
 							<button class="btn btn-square btn-ghost" bind:this={hamburger}>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -120,6 +120,7 @@
 								{/each}
 							</ul>
 						</div>
+
 						<button on:click={wrap(pScrollTo, 'me')}>
 							<div class="flex-1 px-2 mx-2">
 								<Typewriter
@@ -130,9 +131,10 @@
 								</Typewriter>
 							</div>
 						</button>
+
 						{#each Object.entries(navigables) as [name, to]}
 							<button on:click={wrap(pScrollTo, to)}>
-								<div class="flex-1 px-2 mx-2">
+								<div class="flex-1 px-2 mx-2 hidden sm:block">
 									<span class="text-lg">{name}</span>
 								</div>
 							</button>
