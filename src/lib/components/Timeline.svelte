@@ -65,7 +65,7 @@
 		<ol class="items-center flex text-left">
 			{#each entries as entry, index}
 				<li
-					class="relative h-full w-[50vw] md:w-[33vw] lg:w-[27vw] xl:w-[25vw]"
+					class="relative h-full w-[90vw] md:w-[33vw] lg:w-[27vw] xl:w-[25vw]"
 					bind:this={items[index]}
 				>
 					<div class="flex items-center">
