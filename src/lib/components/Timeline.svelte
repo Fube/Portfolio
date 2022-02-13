@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Icon from '@iconify/svelte';
 
 	export let entries: TimelineEntry[] = [];
 	export let vertical = false;
@@ -58,24 +59,7 @@
 	</div>
 {:else}
 	<button on:click={handleLeft}>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-			role="img"
-			width="45"
-			height="45"
-			preserveAspectRatio="xMidYMid meet"
-			viewBox="0 0 24 24"
-			><g fill="none"
-				><path
-					d="M15 4l-8 8l8 8"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				/></g
-			></svg
-		>
+		<Icon icon="akar-icons:chevron-left" width="45" />
 	</button>
 	<div class={carousel ? 'w-full sm:w-2/3 carousel rounded-box p-4' : ''} bind:this={timeline}>
 		<ol class="items-center flex text-left">
@@ -107,26 +91,7 @@
 		</ol>
 	</div>
 	<button on:click={handleRight}>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-			role="img"
-			width="45"
-			height="45"
-			preserveAspectRatio="xMidYMid meet"
-			viewBox="0 0 24 24"
-			><g transform="rotate(180 12 12)"
-				><g fill="none"
-					><path
-						d="M15 4l-8 8l8 8"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					/></g
-				></g
-			></svg
-		>
+		<Icon icon="akar-icons:chevron-right" width="45" />
 	</button>
 {/if}
 
