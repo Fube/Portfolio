@@ -57,17 +57,6 @@
 			...n
 		});
 	}
-
-	function getFlatPropertyFromClass(prop, className, fallback = undefined) {
-		try {
-			if (!window) return;
-			return window
-				.getComputedStyle(document.querySelector('.' + className))
-				.getPropertyValue(prop);
-		} catch (e) {
-			return fallback;
-		}
-	}
 </script>
 
 <div class="flex flex-col h-screen">
