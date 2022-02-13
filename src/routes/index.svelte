@@ -164,9 +164,9 @@
 							</h1>
 							<div class="flex justify-center">
 								<div class="w-fit text-justify p-6 flex flex-col gap-2 max-w-full sm:max-w-[45%]">
-									{@html about
-										.map((str) => `<p class="even:text-secondary odd:text-primary">${str}</p>`)
-										.join('')}
+									{#each about as value}
+										<p class="even:text-secondary odd:text-primary">{value}</p>
+									{/each}
 								</div>
 							</div>
 						</section>
