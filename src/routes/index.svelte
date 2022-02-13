@@ -26,6 +26,8 @@
 	import { slide } from 'svelte/transition';
 	import * as animateScroll from 'svelte-scrollto';
 	import Timeline from '$lib/components/Timeline.svelte';
+	import wrap from '$lib/utils/wrap';
+	import getFlatPropertyFromClass from '$lib/utils/getFlatPropertyFromClass';
 
 	let maxWidth = null;
 	export let projects = [];
