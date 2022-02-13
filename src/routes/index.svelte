@@ -43,6 +43,12 @@
 		when: { selector: '#when', offset: 220 }
 	};
 
+	const navigables = {
+		About: 'who',
+		Projects: 'what',
+		Timeline: 'when'
+	};
+
 	let percent = 100;
 
 	onMount(() => {
@@ -59,6 +65,16 @@
 			...n
 		});
 	}
+
+	let hamburger;
+	let dropDownTop = 56;
+
+	$: {
+		if (hamburger && 'getBoundingClientRect' in hamburger) {
+			const bounds = hamburger.getBoundingClientRect();
+			dropDownTop = bounds.top + bounds.height;
+		}
+	}
 </script>
 
 <div class="flex flex-col h-screen">
@@ -74,8 +90,8 @@
 						class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box sm:rounded-none"
 					>
 						<!-- Hamburger -->
-						<!-- <div class="flex-none">
-							<button class="btn btn-square btn-ghost">
+						<div class="flex-none dropdown">
+							<button class="btn btn-square btn-ghost" bind:this={hamburger}>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -90,7 +106,20 @@
 									/>
 								</svg>
 							</button>
-						</div> -->
+							<ul
+								tabindex="0"
+								class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52"
+								style="top: {dropDownTop}px;"
+							>
+								{#each Object.entries(navigables) as [name, to]}
+									<button on:click={wrap(pScrollTo, to)}>
+										<div class="px-2 mx-2 text-left">
+											<span class="text-lg">{name}</span>
+										</div>
+									</button>
+								{/each}
+							</ul>
+						</div>
 						<button on:click={wrap(pScrollTo, 'me')}>
 							<div class="flex-1 px-2 mx-2">
 								<Typewriter
@@ -101,21 +130,13 @@
 								</Typewriter>
 							</div>
 						</button>
-						<button on:click={wrap(pScrollTo, 'who')}>
-							<div class="flex-1 px-2 mx-2">
-								<span class="text-lg">About</span>
-							</div>
-						</button>
-						<button on:click={wrap(pScrollTo, 'what')}>
-							<div class="flex-1 px-2 mx-2">
-								<span class="text-lg">Projects</span>
-							</div>
-						</button>
-						<button on:click={wrap(pScrollTo, 'when')}>
-							<div class="flex-1 px-2 mx-2">
-								<span class="text-lg">Timeline</span>
-							</div>
-						</button>
+						{#each Object.entries(navigables) as [name, to]}
+							<button on:click={wrap(pScrollTo, to)}>
+								<div class="flex-1 px-2 mx-2">
+									<span class="text-lg">{name}</span>
+								</div>
+							</button>
+						{/each}
 					</div>
 				</div>
 			</div>
