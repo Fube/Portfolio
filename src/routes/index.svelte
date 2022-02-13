@@ -48,10 +48,6 @@
 		pScrollTo(target);
 	});
 
-	function wrap(fn, ...args) {
-		return () => fn(...args);
-	}
-
 	function pScrollTo(target) {
 		const n = { ...idToSection[target] };
 		n.element = document.querySelector(n.selector);
