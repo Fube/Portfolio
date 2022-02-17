@@ -28,6 +28,7 @@
 	import Timeline from '$lib/components/Timeline.svelte';
 	import wrap from '$lib/utils/wrap';
 	import getFlatPropertyFromClass from '$lib/utils/getFlatPropertyFromClass';
+	import Icon from '@iconify/svelte';
 
 	let maxWidth = null;
 	export let projects = [];
@@ -161,7 +162,9 @@
 									{/each}
 								</Typewriter>
 							</h3>
-							[Arrow down here]
+							<div class="flex justify-center animate-bounce mt-2">
+								<Icon icon="akar-icons:chevron-down" width="36" />
+							</div>
 						</div>
 					</section>
 				</ParallaxLayer>
