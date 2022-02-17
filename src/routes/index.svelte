@@ -39,7 +39,7 @@
 	let parallax;
 	const idToSection = {
 		me: '#fakeIdHere',
-		who: { selector: '#who', offset: 350 },
+		who: { selector: '#who', offset: 400 },
 		what: { selector: '#what', offset: 220 },
 		when: { selector: '#when', offset: 220 }
 	};
@@ -163,7 +163,9 @@
 								</Typewriter>
 							</h3>
 							<div class="flex justify-center animate-bounce mt-2">
-								<Icon icon="akar-icons:chevron-down" width="36" />
+								<span on:click={wrap(pScrollTo, 'who')}>
+									<Icon class="cursor-pointer" icon="akar-icons:chevron-down" width="36" />
+								</span>
 							</div>
 						</div>
 					</section>
