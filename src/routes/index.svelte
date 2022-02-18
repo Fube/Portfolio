@@ -35,6 +35,7 @@
 	export let whoAmI = ['developer'];
 	export let about = [''];
 	export let timeline = [];
+	export let cv = '';
 
 	let parallax;
 	const idToSection = {

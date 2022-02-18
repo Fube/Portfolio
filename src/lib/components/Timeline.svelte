@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
 
 	export let entries: TimelineEntry[] = [];
