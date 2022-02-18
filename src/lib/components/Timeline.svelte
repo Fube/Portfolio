@@ -26,14 +26,18 @@
 	}
 
 	let items: HTMLElement[] = [];
-	onMount(() => {
+
+	let timelineWidth: number = 0;
+	$: {
+		void timelineWidth;
+
 		let avg = 0;
 		for (let i = 0; i < items.length; i++) {
 			avg += items[i].offsetWidth;
 		}
 		avg /= items.length;
 		scrollLen = avg;
-	});
+	}
 </script>
 
 {#if vertical}
@@ -61,7 +65,11 @@
 	<button on:click={handleLeft}>
 		<Icon icon="akar-icons:chevron-left" width="45" />
 	</button>
-	<div class={carousel ? 'w-full sm:w-2/3 carousel rounded-box p-4' : ''} bind:this={timeline}>
+	<div
+		class={carousel ? 'w-full sm:w-2/3 carousel rounded-box p-4' : ''}
+		bind:this={timeline}
+		bind:offsetWidth={timelineWidth}
+	>
 		<ol class="items-center flex text-left">
 			{#each entries as entry, index}
 				<li
