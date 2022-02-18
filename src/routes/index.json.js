@@ -32,7 +32,7 @@ export async function get() {
 				order: 'fields.date'
 			})
 		),
-		client.getAsset('41oTSJmEtIWP3KYWM6sObB').then((asset) => asset.fields.file.url)
+		client.getAsset(process.env.CV_ID).then((asset) => asset.fields.file.url)
 	]);
 
 	return {
