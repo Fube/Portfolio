@@ -19,16 +19,16 @@
 
 <script>
 	import Project from '$lib/components/Project.svelte';
+	import Timeline from '$lib/components/Timeline.svelte';
 	import Visibility from '$lib/components/Visibility.svelte';
+	import getFlatPropertyFromClass from '$lib/utils/getFlatPropertyFromClass';
+	import wrap from '$lib/utils/wrap';
+	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
 	import { Parallax, ParallaxLayer } from 'svelte-parallax';
+	import * as animateScroll from 'svelte-scrollto';
 	import Typewriter from 'svelte-typewriter';
 	import { slide } from 'svelte/transition';
-	import * as animateScroll from 'svelte-scrollto';
-	import Timeline from '$lib/components/Timeline.svelte';
-	import wrap from '$lib/utils/wrap';
-	import getFlatPropertyFromClass from '$lib/utils/getFlatPropertyFromClass';
-	import Icon from '@iconify/svelte';
 
 	let maxWidth = null;
 	export let projects = [];
@@ -117,7 +117,7 @@
 									cursor={getFlatPropertyFromClass('color', 'text-secondary')}
 									loop={99999999999}
 								>
-									<span class="text-2xl font-bold">Fube</span>
+									<span class="text-3xl md:text-4xl font-bold">Fube</span>
 								</Typewriter>
 							</div>
 						</button>
@@ -129,6 +129,21 @@
 								</div>
 							</button>
 						{/each}
+
+						<div class="flex-1 justify-end navbar-end">
+							<div class="flex justify-around gap-2">
+								<a class="flex-1 self-center" href={cv}>
+									<!-- <Icon icon="academicons:cv" width="38" /> -->
+									<span class="text-4xl font-semibold h-full">CV</span>
+								</a>
+								<a class="flex-1" href="https://www.github.com/Fube">
+									<Icon icon="jam:github" width="36" />
+								</a>
+								<a class="flex-1" href="https://linkedin.com/in/nariman-abrari">
+									<Icon icon="jam:linkedin" width="36" />
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
