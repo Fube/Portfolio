@@ -93,7 +93,7 @@
 					>
 						<!-- Hamburger -->
 						<div class="flex-none dropdown block sm:hidden">
-							<button class="btn btn-square btn-ghost" bind:this={hamburger}>
+							<button aria-label="hamburger menu" class="btn btn-square btn-ghost" bind:this={hamburger}>
 								<Icon icon="charm:menu-hamburger" width="36" />
 							</button>
 							<ul
@@ -102,7 +102,7 @@
 								style="top: {dropDownTop}px;"
 							>
 								{#each Object.entries(navigables) as [name, to]}
-									<button on:click={wrap(pScrollTo, to)}>
+									<button aria-label={name} on:click={wrap(pScrollTo, to)}>
 										<div class="px-2 mx-2 text-left">
 											<span class="text-lg">{name}</span>
 										</div>
