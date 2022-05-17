@@ -61,7 +61,7 @@
 		</ol>
 	</div>
 {:else}
-	<button on:click={handleLeft}>
+	<button aria-label="timeline-previous" on:click={handleLeft}>
 		<Icon icon="akar-icons:chevron-left" width="45" />
 	</button>
 	<div
@@ -97,7 +97,7 @@
 			{/each}
 		</ol>
 	</div>
-	<button on:click={handleRight}>
+	<button aria-label="timeline-next" on:click={handleRight}>
 		<Icon icon="akar-icons:chevron-right" width="45" />
 	</button>
 {/if}
