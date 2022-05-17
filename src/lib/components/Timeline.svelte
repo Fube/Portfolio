@@ -50,9 +50,9 @@
 					<time class="mb-1 font-normal leading-none text-primary-focus text-sm"
 						>{entry.date.toLocaleString('default', { month: 'long', year: 'numeric' })}
 					</time>
-					<h3 class="text-lg font-semibold text-secondary-focus">
+					<h4 class="text-lg font-semibold text-secondary-focus">
 						{entry.title}
-					</h3>
+					</h4>
 					<p class="mb-4 text-base font-normal">
 						{entry.body}
 					</p>
@@ -83,9 +83,9 @@
 						{/if}
 					</div>
 					<div class="mt-3 pr-8">
-						<h3 class="text-lg font-semibold text-primary-focus">
+						<h4 class="text-lg font-semibold text-primary-focus">
 							{entry.title}
-						</h3>
+						</h4>
 						<time class="block mb-2 text-sm font-semibold text-secondary-focus"
 							>{entry.date.toLocaleString('default', { month: 'long', year: 'numeric' })}</time
 						>
