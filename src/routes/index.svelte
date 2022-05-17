@@ -154,18 +154,18 @@
 				<ParallaxLayer>
 					<section class="hero h-full">
 						<div class="w-full text-center">
-							<h2 class="mb-5 text-secondary text-sm">Hello there, I'm</h2>
+							<p class="mb-5 text-secondary text-sm font-bold">Hello there, I'm</p>
 							<Visibility steps={100} bind:percent>
 								<h1 class="mb-3 text-6xl font-bold ml-2">Fube</h1>
 							</Visibility>
-							<h3 class="text-secondary">
+							<h2 class="text-secondary">
 								<span class="text-left">I'm a</span>
 								<Typewriter loop cursor={getFlatPropertyFromClass('color', 'text-primary')}>
 									{#each whoAmI as value}
 										<span class="text-primary text-lg block text-center pl-3">{value}</span>
 									{/each}
 								</Typewriter>
-							</h3>
+							</h2>
 							<div class="flex justify-center animate-bounce mt-2">
 								<span on:click={wrap(pScrollTo, 'who')}>
 									<Icon class="cursor-pointer" icon="akar-icons:chevron-down" width="36" />
