@@ -40,11 +40,11 @@
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 
-<div
+<section
 	class="project hover:!max-w-[90vw] hover:md:!max-w-[70vw] hover:lg:!max-w-[50vw] hover:!max-h-[100vh] hover:!whitespace-normal"
 	bind:this={wholeRef}
 >
-	<h4 bind:this={titleRef} class="inline-block p-4">{title}</h4>
+	<h1 bind:this={titleRef} class="inline-block p-4">{title}</h1>
 	<code class="text-left w-full">
 		<ul>
 			<li class="text-center text-info pb-2">Written in {lang.join(', ')}</li>
@@ -61,7 +61,7 @@
 			</a>
 		</div>
 	{/if}
-</div>
+</section>
 
 <style lang="postcss">
 	.project {
