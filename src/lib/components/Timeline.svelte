@@ -82,17 +82,17 @@
 							<div class="pink-dot" />
 						{/if}
 					</div>
-					<div class="mt-3 pr-8">
-						<h4 class="text-lg font-semibold text-primary-focus">
+					<section class="mt-3 pr-8">
+						<h1 class="text-lg font-semibold text-primary-focus">
 							{entry.title}
-						</h4>
+						</h1>
 						<time class="block mb-2 text-sm font-semibold text-secondary-focus"
 							>{entry.date.toLocaleString('default', { month: 'long', year: 'numeric' })}</time
 						>
 						<p class="text-base font-normal">
 							{entry.body}
 						</p>
-					</div>
+					</section>
 				</li>
 			{/each}
 		</ol>
