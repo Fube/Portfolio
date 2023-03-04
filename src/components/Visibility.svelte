@@ -10,11 +10,12 @@
 
 	export let onPercentChange = (percent) => {};
 
+
 	let element;
-	export let percent;
 	let observer;
 	let unobserve = () => {};
 	let intersectionObserverSupport = false;
+        let percent;
 
 	function intersectPercent(entries) {
 		entries.forEach((entry) => {

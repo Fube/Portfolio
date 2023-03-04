@@ -7,7 +7,7 @@
 	export let lang: string[];
 	export let content: string;
 	export let github: string = '';
-	export let maxWidth: number = null;
+	export let maxWidth: number | null = null;
 
 	let calculated = false;
 

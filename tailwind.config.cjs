@@ -1,15 +1,13 @@
-// tailwind.config.cjs
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
 	mode: 'jit',
-	// add this section
-	content: ['./src/**/*.html', './src/**/*.svelte'],
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	darkMode: 'media', // or 'media' or 'class'
 	theme: {
-		extend: {}
+		extend: {},
 	},
 	variants: {
 		extend: {}
 	},
 	plugins: [require('daisyui')]
-};
+}
