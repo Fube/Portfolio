@@ -41,8 +41,9 @@
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 
 <section
-	class="project hover:!max-w-[90vw] hover:md:!max-w-[70vw] hover:lg:!max-w-[50vw] hover:!max-h-[100vh] hover:!whitespace-normal"
+	class="project focus:!max-w-[90vw] focus:md:!max-w-[70vw] focus:lg:!max-w-[50vw] focus:!max-h-[100vh] focus:!whitespace-normal cursor-pointer"
 	bind:this={wholeRef}
+        tabIndex={-1}
 >
 	<h1 bind:this={titleRef} class="inline-block p-4">{title}</h1>
 	<code class="text-left w-full">

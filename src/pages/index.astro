@@ -1,17 +1,13 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
-import Test from '../components/Test.svelte';
+import App from '../components/App.svelte';
 import Navigation from '../components/Navigation.svelte';
 import { client } from '../lib/contentful';
+import type { Entry, EntryCollection } from 'contentful';
 
 
-/**
- *
- * @param {Promise<contentful.EntryCollection<any>>[]} entryPromises
- * @returns
- */
-function getRefinedEntries(...entryPromises) {
+function getRefinedEntries(...entryPromises: Promise<EntryCollection<any>>[]) : any[] {
 	return entryPromises.map((n) => n.then((entry) => entry.items.map((item) => item.fields)));
 }
 
@@ -42,7 +38,7 @@ about = about[0].content.split`--BREAK--`;
     <div>
         <Navigation client:idle {cv} />
         <div class="mt-12">
-            <Test client:load {whoAmI} {about} {projects} {timeline}/>
+            <App client:load {whoAmI} {about} {projects} {timeline}/>
         </div>
     </div>
 </Layout>

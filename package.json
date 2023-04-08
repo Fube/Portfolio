@@ -21,6 +21,7 @@
 	"devDependencies": {
 		"@iconify/svelte": "^3.1.0",
 		"daisyui": "1.22.0",
+		"svelte-markdown": "^0.2.3",
 		"svelte-parallax": "^0.3.1",
 		"svelte-preprocess": "^4.10.1",
 		"svelte-scrollto": "^0.2.0",

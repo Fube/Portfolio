@@ -12,7 +12,7 @@
     export let timeline: TimelineEntry[] = [];
 </script>
 
-<Parallax sections={2.33} disabled={false}>
+<Parallax sections={2.4} disabled={false}>
     <ParallaxLayer>
         <Hero {whoAmI} />
     </ParallaxLayer>
@@ -39,5 +39,10 @@
 <style scoped lang="postcss">
     section {
         min-height: 75vh;
+    }
+
+    section:last-of-type {
+        min-height: unset;
+        height: 80%;
     }
 </style>
